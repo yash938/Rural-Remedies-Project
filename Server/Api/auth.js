@@ -60,7 +60,8 @@ router.post("/user/login",(req,res)=>{
             }
             const token = jwt.sign({
                 email:user[0].email,
-                fullName:user[0].fullName
+                fullName:user[0].fullName,
+                userType:"user"
             },
             'I am yash this is my secret key',
             {
@@ -89,7 +90,8 @@ router.post("/admin/login",(req,res)=>{
     {
         const token = jwt.sign({
             email:"yash32860@gmail.com",
-            fullName:"yash sharma"
+            fullName:"yash sharma",
+            userType:"admin"
         },
         'I am yash this is my secret key',
         {
