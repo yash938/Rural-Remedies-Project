@@ -79,5 +79,24 @@ router.delete("/:id",async (req,res)=>{
         })
        })
  })
+
+
+
+ //count all category
+
+ router.get("/get/count",(req,res)=>{
+    categorySchema.find().countDocuments()
+    .then(result=>{
+        res.status(200).json({
+            count:result
+        })
+    })
+    .catch(err=>{
+        console.log(err)
+        res.status(404).json({
+            error:err
+        })
+    })
+ })
 module.exports = router;
  

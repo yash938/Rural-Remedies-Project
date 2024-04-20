@@ -68,7 +68,6 @@ router.get("/category/:category",async (req,res)=>{
    await PostSchema.find({category:req.params.category})
    .select("_id title description category imageUrl")
    .then(result=>{
-    console.log(result);
     res.status(200).json({
        Posts:result
     })
@@ -115,6 +114,23 @@ router.delete("/:id",async (req,res)=>{
             error:err
         })
        })
+ })
+
+
+ //count all post
+ router.get("/get/count",(req,res)=>{
+    PostSchema.find().countDocuments()
+    .then(result=>{
+        res.status(200).json({
+            count:result
+        })
+    })
+    .catch(err=>{
+        console.log(err)
+        res.status(404).json({
+            error:err
+        })
+    })
  })
 module.exports = router;
  
