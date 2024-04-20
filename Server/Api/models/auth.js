@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const authSchema  = mongoose.Schema({
 _id:mongoose.Schema.Types.ObjectId,
-fullname:{
+fullName:{
     type:String,
     require:true
 },

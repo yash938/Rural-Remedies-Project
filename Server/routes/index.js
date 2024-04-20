@@ -4,7 +4,8 @@ const mongoose = require("mongoose")
 
 const post = require("../Api/post")
 const category = require('../Api/category')
-const authSchema = require('../Api/auth')
+const authSchema = require('../Api/auth');
+const comment = require("../Api/comment");
 const URI = "mongodb://localhost:27017/Home-Remedies"
 mongoose.connect(URI)
 mongoose.connection.on('connected',()=>{
@@ -16,7 +17,7 @@ mongoose.connection.on('error',(err)=>{
 })
 
 
-
+router.use("/comment",comment)
 router.use("/auth",authSchema)
 router.use("/remedies", post);
 router.use("/category",category)
